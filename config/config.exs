@@ -11,6 +11,8 @@ config :seven_mind,
   ecto_repos: [SevenMind.Repo],
   generators: [timestamp_type: :utc_datetime]
 
+config :seven_mind, event_stores: [SevenMind.EventStore]
+
 # Configures the endpoint
 config :seven_mind, SevenMindWeb.Endpoint,
   url: [host: "localhost"],

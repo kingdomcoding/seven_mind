@@ -13,6 +13,15 @@ config :seven_mind, SevenMind.Repo,
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
 
+config :seven_mind, SevenMind.EventStore,
+  serializer: Commanded.Serialization.JsonSerializer,
+  username: "postgres",
+  password: "postgres",
+  database: "seven_mind_test#{System.get_env("MIX_TEST_PARTITION")}",
+  schema: "event_store",
+  hostname: "localhost",
+  pool_size: 10
+
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :seven_mind, SevenMindWeb.Endpoint,
