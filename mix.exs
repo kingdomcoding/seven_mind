@@ -56,6 +56,8 @@ defmodule SevenMind.MixProject do
       {:ash_postgres, "~> 1.3"},
       {:ash_phoenix, "~> 1.2"},
       {:ash_json_api, "~> 0.34"},
+      {:commanded, "~> 1.4"},
+      {:commanded_eventstore_adapter, "~> 1.4"},
     ]
   end
 
