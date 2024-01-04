@@ -52,6 +52,10 @@ defmodule SevenMind.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.5"},
       {:eventstore, "~> 1.4"},
+      {:ash, "~> 2.17"},
+      {:ash_postgres, "~> 1.3"},
+      {:ash_phoenix, "~> 1.2"},
+      {:ash_json_api, "~> 0.34"},
     ]
   end
 
@@ -66,6 +70,7 @@ defmodule SevenMind.MixProject do
       setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "event_store.setup": ["event_store.create", "event_store.init"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
       "assets.build": ["tailwind default", "esbuild default"],
