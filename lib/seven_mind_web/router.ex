@@ -21,9 +21,11 @@ defmodule SevenMindWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", SevenMindWeb do
-  #   pipe_through :api
-  # end
+  scope "/api" do
+    pipe_through :api
+
+    forward "/content-manager", SevenMindWeb.ContentManager.Setup.Router
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:seven_mind, :dev_routes) do

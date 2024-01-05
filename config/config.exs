@@ -13,6 +13,8 @@ config :seven_mind,
 
 config :seven_mind, event_stores: [SevenMind.EventStore]
 
+config :seven_mind, ash_apis: [SevenMindWeb.ContentManager.Setup.Api]
+
 # Configures the endpoint
 config :seven_mind, SevenMindWeb.Endpoint,
   url: [host: "localhost"],
@@ -32,6 +34,14 @@ config :seven_mind, SevenMindWeb.Endpoint,
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
 config :seven_mind, SevenMind.Mailer, adapter: Swoosh.Adapters.Local
+
+config :mime, :types, %{
+  "application/vnd.api+json" => ["json"]
+}
+
+config :mime, :extensions, %{
+  "json" => "application/vnd.api+json"
+}
 
 # Configure esbuild (the version is required)
 config :esbuild,
