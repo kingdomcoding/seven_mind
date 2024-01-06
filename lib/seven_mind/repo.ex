@@ -1,5 +1,3 @@
 defmodule SevenMind.Repo do
-  use Ecto.Repo,
-    otp_app: :seven_mind,
-    adapter: Ecto.Adapters.Postgres
+  use AshPostgres.Repo, otp_app: :seven_mind
 end
