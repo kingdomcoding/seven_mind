@@ -14,11 +14,17 @@ defmodule SevenMindWeb.ContentManager.Json.ReadModels.Category do
   end
 
   actions do
-    defaults [:create, :read, :update, :destroy]
+    defaults [:create, :update, :destroy]
+
+    read :read do
+      pagination do
+        offset? true
+      end
+    end
   end
 
   json_api do
-    type "category_read_model"
+    type "Category Queries"
 
     routes do
       base "/categories"
