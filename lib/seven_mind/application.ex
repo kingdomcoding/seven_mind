@@ -29,6 +29,7 @@ defmodule SevenMind.Application do
       SevenMindWeb.Endpoint,
       # Commanded
       __MODULE__,
+      SevenMindWeb.ContentManager.Setup.Supervisor,
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
