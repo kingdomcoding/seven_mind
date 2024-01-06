@@ -20,6 +20,8 @@ defmodule SevenMindWeb.ContentManager.Json.ReadModels.Category do
       pagination do
         offset? true
       end
+
+      primary? true
     end
   end
 
