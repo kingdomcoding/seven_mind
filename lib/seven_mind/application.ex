@@ -13,6 +13,7 @@ defmodule SevenMind.Application do
     ]
 
   router SevenMind.CourseManagement.Aggregates.Category
+  router SevenMind.Meditation.Aggregates.Reminder
 
   @impl true
   def start(_type, _args) do
@@ -30,6 +31,7 @@ defmodule SevenMind.Application do
       # Commanded
       __MODULE__,
       SevenMindWeb.ContentManager.Setup.Supervisor,
+      SevenMindWeb.Meditator.Setup.Supervisor,
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

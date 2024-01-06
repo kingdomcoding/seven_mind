@@ -1,4 +1,4 @@
-defmodule SevenMindWeb.ContentManager.Json.ReadModels.Category do
+defmodule SevenMindWeb.Meditator.Json.ReadModels.Reminder do
   use Ash.Resource, extensions: [AshJsonApi.Resource], data_layer: AshPostgres.DataLayer
 
   use Commanded.Event.Handler,
@@ -6,11 +6,12 @@ defmodule SevenMindWeb.ContentManager.Json.ReadModels.Category do
     name: "#{__MODULE__}",
     consistency: :strong
 
-  alias SevenMind.CourseManagement.DomainEvents.CategoryCreated
+  alias SevenMind.Meditation.DomainEvents.ReminderCreated
 
   attributes do
     attribute :id, :uuid, primary_key?: true, allow_nil?: false
-    attribute :name, :string, allow_nil?: false
+    attribute :user_id, :uuid, allow_nil?: false
+    attribute :time, :time, allow_nil?: false
   end
 
   actions do
@@ -27,10 +28,10 @@ defmodule SevenMindWeb.ContentManager.Json.ReadModels.Category do
   end
 
   json_api do
-    type "Category Queries"
+    type "Reminder Queries"
 
     routes do
-      base "/categories"
+      base "/reminders"
 
       get :read
       index :read
@@ -38,17 +39,17 @@ defmodule SevenMindWeb.ContentManager.Json.ReadModels.Category do
   end
 
   code_interface do
-    define_for SevenMindWeb.ContentManager.Setup.Api
+    define_for SevenMindWeb.Meditator.Setup.Api
     define :create
   end
 
   postgres do
     repo SevenMind.Repo
-    table "content_manager__json__read_models__categories"
+    table "meditator__json__read_models__reminders"
   end
 
-  def handle(%CategoryCreated{id: category_id, name: name}, _metadata) do
-    with {:ok, _category} <- __MODULE__.create(%{id: category_id, name: name}) do
+  def handle(%ReminderCreated{id: reminder_id, user_id: user_id, time: time}, _metadata) do
+    with {:ok, _remider} <- __MODULE__.create(%{id: reminder_id, user_id: user_id, time: time}) do
       :ok
     end
   end
