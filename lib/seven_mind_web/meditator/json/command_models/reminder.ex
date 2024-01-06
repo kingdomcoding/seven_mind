@@ -1,8 +1,6 @@
 defmodule SevenMindWeb.Meditator.Json.CommandModels.Reminder do
   use Ash.Resource, extensions: [AshJsonApi.Resource]
 
-  alias SevenMind.Meditation.DomainDataTypes.{Hour, Minute}
-
   attributes do
     uuid_primary_key :id, private?: true
     attribute :user_id, :uuid, allow_nil?: false, private?: true

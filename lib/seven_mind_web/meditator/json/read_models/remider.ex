@@ -1,6 +1,5 @@
 defmodule SevenMindWeb.Meditator.Json.ReadModels.Reminder do
-  # use Ash.Resource, extensions: [AshJsonApi.Resource], data_layer: AshPostgres.DataLayer
-  use Ash.Resource, extensions: [AshJsonApi.Resource], data_layer: Ash.DataLayer.Ets
+  use Ash.Resource, extensions: [AshJsonApi.Resource], data_layer: AshPostgres.DataLayer
 
   use Commanded.Event.Handler,
     application: SevenMind.Application,
@@ -21,6 +20,7 @@ defmodule SevenMindWeb.Meditator.Json.ReadModels.Reminder do
     read :read do
       pagination do
         offset? true
+        default_limit 100
       end
 
       primary? true
@@ -43,10 +43,10 @@ defmodule SevenMindWeb.Meditator.Json.ReadModels.Reminder do
     define :create
   end
 
-  # postgres do
-  #   repo SevenMind.Repo
-  #   table "meditator__json__read_models__reminders"
-  # end
+  postgres do
+    repo SevenMind.Repo
+    table "meditator__json__read_models__reminders"
+  end
 
   def handle(%ReminderCreated{id: reminder_id, user_id: user_id, time: time}, _metadata) do
     with {:ok, _category} <- __MODULE__.create(%{id: reminder_id, user_id: user_id, time: time}) do

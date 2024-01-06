@@ -19,6 +19,7 @@ defmodule SevenMindWeb.ContentManager.Json.ReadModels.Category do
     read :read do
       pagination do
         offset? true
+        default_limit 100
       end
 
       primary? true
