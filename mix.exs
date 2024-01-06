@@ -58,6 +58,8 @@ defmodule SevenMind.MixProject do
       {:ash_json_api, "~> 0.34"},
       {:commanded, "~> 1.4"},
       {:commanded_eventstore_adapter, "~> 1.4"},
+      {:open_api_spex, "~> 3.18"},
+      {:redoc_ui_plug, "~> 0.2"},
     ]
   end
 
