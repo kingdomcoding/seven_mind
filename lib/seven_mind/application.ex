@@ -5,6 +5,15 @@ defmodule SevenMind.Application do
 
   use Application
 
+  use Commanded.Application,
+    otp_app: :seven_mind,
+    event_store: [
+      adapter: Commanded.EventStore.Adapters.EventStore,
+      event_store: SevenMind.EventStore
+    ]
+
+  router SevenMind.CourseManagement.Aggregates.Category
+
   @impl true
   def start(_type, _args) do
     children = [
@@ -17,7 +26,9 @@ defmodule SevenMind.Application do
       # Start a worker by calling: SevenMind.Worker.start_link(arg)
       # {SevenMind.Worker, arg},
       # Start to serve requests, typically the last entry
-      SevenMindWeb.Endpoint
+      SevenMindWeb.Endpoint,
+      # Commanded
+      __MODULE__,
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

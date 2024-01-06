@@ -13,7 +13,12 @@ config :seven_mind,
 
 config :seven_mind, event_stores: [SevenMind.EventStore]
 
-config :seven_mind, ash_apis: [SevenMindWeb.ContentManager.Setup.Api]
+config :seven_mind, ash_apis: [
+  SevenMindWeb.ContentManager.Setup.Api,
+  SevenMindWeb.Meditator.Setup.Api,
+  
+  SevenMind.CourseManagement.Setup.Api,
+]
 
 # Configures the endpoint
 config :seven_mind, SevenMindWeb.Endpoint,
