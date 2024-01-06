@@ -49,7 +49,7 @@ defmodule SevenMindWeb.Meditator.Json.ReadModels.Reminder do
   end
 
   def handle(%ReminderCreated{id: reminder_id, user_id: user_id, time: time}, _metadata) do
-    with {:ok, _category} <- __MODULE__.create(%{id: reminder_id, user_id: user_id, time: time}) do
+    with {:ok, _remider} <- __MODULE__.create(%{id: reminder_id, user_id: user_id, time: time}) do
       :ok
     end
   end
