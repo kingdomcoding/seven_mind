@@ -1,7 +1,8 @@
 defmodule SevenMindWeb.ContentManager.Json.CommandModels.Category do
-  use Ash.Resource, extensions: [AshJsonApi.Resource], data_layer: :embedded
+  use Ash.Resource, extensions: [AshJsonApi.Resource]
 
   attributes do
+    uuid_primary_key :id, private?: true
     attribute :name, :string, allow_nil?: false
   end
 
