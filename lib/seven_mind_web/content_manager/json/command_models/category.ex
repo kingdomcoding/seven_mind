@@ -30,7 +30,7 @@ defmodule SevenMindWeb.ContentManager.Json.CommandModels.Category do
   end
 
   json_api do
-    type "category"
+    type "category_command_model"
 
     routes do
       base "/categories"

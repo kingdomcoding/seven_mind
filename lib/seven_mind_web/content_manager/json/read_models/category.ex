@@ -18,7 +18,7 @@ defmodule SevenMindWeb.ContentManager.Json.ReadModels.Category do
   end
 
   json_api do
-    type "category"
+    type "category_read_model"
 
     routes do
       base "/categories"
