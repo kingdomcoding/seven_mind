@@ -1,5 +1,5 @@
 defmodule SevenMindWeb.ContentManager.Json.ReadModels.Category do
-  use Ash.Resource, extensions: [AshJsonApi.Resource], data_layer: Ash.DataLayer.Ets
+  use Ash.Resource, extensions: [AshJsonApi.Resource], data_layer: AshPostgres.DataLayer
 
   use Commanded.Event.Handler,
     application: SevenMind.Application,
@@ -31,6 +31,11 @@ defmodule SevenMindWeb.ContentManager.Json.ReadModels.Category do
   code_interface do
     define_for SevenMindWeb.ContentManager.Setup.Api
     define :create
+  end
+
+  postgres do
+    repo SevenMind.Repo
+    table "content_manager__json__read_models__categories"
   end
 
   def handle(%CategoryCreated{id: category_id, name: name}, _metadata) do
