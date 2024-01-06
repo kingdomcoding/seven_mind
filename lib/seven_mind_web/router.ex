@@ -21,10 +21,36 @@ defmodule SevenMindWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  scope "/api" do
+  scope "/api/content-manager" do
     pipe_through :api
 
-    forward "/content-manager", SevenMindWeb.ContentManager.Setup.Router
+    forward "/swaggerui",
+      SevenMindWeb.ContentManager.Setup.SwaggerUi,
+      path: "/api/content-manager/open_api",
+      title: "Content Manager JSON-API - Swagger UI",
+      default_model_expand_depth: 4
+
+    forward "/redoc",
+      SevenMindWeb.ContentManager.Setup.Redoc,
+      spec_url: "/api/content-manager/open_api"
+
+    forward "/", SevenMindWeb.ContentManager.Setup.Router
+  end
+
+  scope "/api/meditator" do
+    pipe_through :api
+
+    forward "/swaggerui",
+      SevenMindWeb.Meditator.Setup.SwaggerUi,
+      path: "/api/meditator/open_api",
+      title: "Meditator JSON-API - Swagger UI",
+      default_model_expand_depth: 4
+
+    forward "/redoc",
+      SevenMindWeb.Meditator.Setup.Redoc,
+      spec_url: "/api/meditator/open_api"
+
+    forward "/", SevenMindWeb.Meditator.Setup.Router
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
