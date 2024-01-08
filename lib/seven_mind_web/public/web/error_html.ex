@@ -1,4 +1,4 @@
-defmodule SevenMindWeb.ErrorHTML do
+defmodule SevenMindWeb.Public.Web.ErrorHTML do
   use SevenMindWeb, :html
 
   # If you want to customize your error pages,
