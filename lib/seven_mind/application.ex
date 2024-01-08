@@ -10,6 +10,9 @@ defmodule SevenMind.Application do
     event_store: [
       adapter: Commanded.EventStore.Adapters.EventStore,
       event_store: SevenMind.EventStore
+    ],
+    default_dispatch_opts: [
+      consistency: Application.get_env(:seven_mind, :consistency, :eventual)
     ]
 
   router SevenMind.CourseManagement.Aggregates.Category
