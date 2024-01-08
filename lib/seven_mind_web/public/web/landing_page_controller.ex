@@ -1,4 +1,4 @@
-defmodule SevenMindWeb.Public.Web.PageController do
+defmodule SevenMindWeb.Public.Web.LandingPageController do
   use SevenMindWeb, :controller
 
   def home(conn, _params) do

@@ -1,4 +1,4 @@
-defmodule SevenMindWeb.Public.Web.PageControllerTest do
+defmodule SevenMindWeb.Public.Web.LandingPageControllerTest do
   use SevenMindWeb.ConnCase
 
   test "GET /", %{conn: conn} do
