@@ -17,7 +17,7 @@ defmodule SevenMindWeb.Router do
   scope "/", SevenMindWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    get "/", Public.Web.LandingPageController, :home
   end
 
   # Other scopes may use custom stacks.

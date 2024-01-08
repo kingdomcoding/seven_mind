@@ -26,7 +26,7 @@ config :seven_mind, SevenMindWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Phoenix.Endpoint.Cowboy2Adapter,
   render_errors: [
-    formats: [html: SevenMindWeb.ErrorHTML, json: SevenMindWeb.ErrorJSON],
+    formats: [html: SevenMindWeb.Public.Web.ErrorHTML, json: SevenMindWeb.Public.Json.ErrorJson],
     layout: false
   ],
   pubsub_server: SevenMind.PubSub,
