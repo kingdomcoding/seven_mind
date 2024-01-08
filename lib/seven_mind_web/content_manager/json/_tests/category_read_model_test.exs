@@ -4,7 +4,7 @@ defmodule SevenMindWeb.ContentManager.JSON.Tests.CategoryReadModelTest do
   describe "Category Read Model happy path" do
     test "WHEN: A GET request is made to the index route, THEN: An empty data list is returned", %{conn: conn} do
       conn = get(conn, ~p"/api/content-manager/categories")
-      %{"data" => data} = response = json_response(conn, 200)
+      %{"data" => data} = json_response(conn, 200)
       assert data == []
     end
 
@@ -13,7 +13,7 @@ defmodule SevenMindWeb.ContentManager.JSON.Tests.CategoryReadModelTest do
       {:ok, %{id: category_id}} = SevenMind.CourseManagement.UseCases.create_category(category_name)
 
       conn = get(conn, ~p"/api/content-manager/categories")
-      %{"data" => data} = response = json_response(conn, 200)
+      %{"data" => data} = json_response(conn, 200)
       assert Enum.any?(data, fn category -> category["id"] == category_id && category["attributes"]["name"] == category_name end)
     end
 
@@ -22,7 +22,7 @@ defmodule SevenMindWeb.ContentManager.JSON.Tests.CategoryReadModelTest do
       {:ok, %{id: category_id}} = SevenMind.CourseManagement.UseCases.create_category(category_name)
 
       conn = get(conn, ~p"/api/content-manager/categories/#{category_id}")
-      %{"data" => category} = response = json_response(conn, 200)
+      %{"data" => category} = json_response(conn, 200)
       assert category["id"] == category_id && category["attributes"]["name"] == category_name
     end
   end
